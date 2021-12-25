@@ -45,6 +45,37 @@ class Solution {
         x.val = y.val;
         y.val = v;
     }
+	
+	
+	// ANother solution
+	
+	TreeNode last;
+    TreeNode n1, n2;
+    
+    public void recoverTree(TreeNode root) {
+        dfs(root);
+        int temp = n1.val;
+        n1.val = n2.val;
+        n2.val = temp;
+    }
+    
+    private void dfs(TreeNode root) {
+        if (root == null) return;
+        
+        dfs(root.left);
+        if (last != null) {
+            if (root.val <= last.val) {
+                if (n1 == null) {
+                    n1 = last;
+                    n2 = root;
+                } else {
+                    n2 = root;
+                }
+            }
+        }
+        last = root;
+        dfs(root.right);
+    }
 }
 
 //https://leetcode.com/problems/recover-binary-search-tree/solution/
