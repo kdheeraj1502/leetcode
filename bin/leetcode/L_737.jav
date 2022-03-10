@@ -4,7 +4,7 @@ class Solution {
         
         for(String[] pair : pairs){
             Set<String> s = new HashSet<>();
-            s.add(pair[0]);
+            s .add(pair[0]);
             s.add(pair[1]);
             set.add(s);
         }
